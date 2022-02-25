@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title>President</title>
+</head>
+<html>
+ 
+<body>
+
+<h2>President guess by Salah Abbas</h2>
+
+<form>
+    <label for="secret_value">Enter the secret president name</label>
+
+    <input type="password" id="secret_value" name="secret_value" value="George Washington"> <br>
+
+    <label for="guess">Guess the president</label>
+    <input type="text" id="guess" name="form1_guessnick" autofocus> <br>
+
+    <input type="button" onclick="checkGuess()" value="Get values from form">
+</form>
+
+
+<p id="result"></p>
+
+<script>
+let correct = wrong = 0;
+
+function checkGuess (){
+    console.log("Getting form values");
+
+    secret = document.getElementById("secret_value").value;
+    guess = document.getElementById("guess").value;
+
+    
+    
+    // confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    if (secret == guess)
+    {
+        alert("You are correct!");
+        correct += 1;
+
+    }
+    else {
+        alert("You are wrong!");
+        wrong += 1;
+    }
+
+    out = document.getElementById("result")
+    out.innerHTML = "You have guessed correctly " + correct + " times and incorrectly " + wrong + " times.";
+}
+</script>
+
+</body>
+</html> 
