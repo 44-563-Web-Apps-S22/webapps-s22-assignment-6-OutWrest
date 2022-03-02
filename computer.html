@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <title>Computer</title>
+</head>
+<html>
+ 
+<body>
+
+<h2>Salah Abbas orders a computer</h2>
+
+<form>
+    <label for="extra">Extra memory</label>
+    <input type="checkbox" id="extra" name="extra" value="extra">
+    <br>
+
+    <label for="mouse">Mouse</label>
+    <input type="checkbox" id="mouse" name="mouse" value="mouse">
+    <br>
+
+    <label for="cell">Cell service</label>
+    <input type="checkbox" id="cell" name="cell" value="cell">
+    <br>
+
+    <input type="button" value="Order a computer" onclick="orderComputer()">
+</form>
+
+<p id="result"></p>
+
+<script> 
+
+let my_computer = {};
+
+function orderComputer (){
+    my_computer = {};
+    if (document.getElementById("extra").checked){
+        my_computer.extra = true;
+    }
+    if (document.getElementById("mouse").checked){
+        my_computer.mouse = true;
+    }
+    if (document.getElementById("cell").checked){
+        my_computer.cell = true;
+    }
+    document.getElementById("result").innerHTML = JSON.stringify(my_computer);
+}
+</script>
+
+</body>
+</html> 
