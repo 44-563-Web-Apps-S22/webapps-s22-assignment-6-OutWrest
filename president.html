@@ -28,6 +28,7 @@
 
 <script>
 let correct = wrong = 0;
+let guessesWrongInARow = 0;
 let useImage = 1;
 let srcImages = ['birds/plain-parakeet.jpg', 'birds/sapayoa.jpg', 'birds/besra.jpg'];
 
@@ -43,11 +44,18 @@ function checkGuess (){
     {
         alert("You are correct!");
         correct += 1;
-
+        guessesWrongInARow = 0;
     }
     else {
         alert("You are wrong!");
         wrong += 1;
+        guessesWrongInARow += 1;
+    }
+
+    if (guessesWrongInARow >= 3)
+    {
+        alert("Sorry, game over.");
+        guessesWrongInARow = 0;
     }
 
     out = document.getElementById("result")
