@@ -21,21 +21,22 @@
 
 <p id="result"></p>
 
-<script>
+<form>
+    <input type="radio" id="times" name="operation" value="times" checked >
+    <label for="times">*</label></br>
 
-// It will get the value from input tip increase.
-// c. It will initialize a local variable result to an empty string.
-// d. Create a loop that will iterate 10 times. It will compute tip values based on
-// the amount with fractions that start at 0.01 (10 percent) and increase each
-// time through the loop by the increase amount. Append each of the values to
-// result.
-// e. Replace the innerHTML for the tagged element from step 5 with the text:
-// Tip amounts by increase of value are: value value value …
-// 8) Check your results. An examples:
-// a. Tip amounts by increase of 0.01 are 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6
-// 3.8 (amount was 20)
-// b. Tip amounts by increase of 0.02 are 1.5 1.8 2.1 2.4 2.7 3.0 3.3 3.6 3.9
-// 4.2 (amount was 15)
+    <input type="radio" id="divide" name="operation" value="divide">
+    <label for="divide">/</label></br>
+
+    <input type="radio" id="exponent" name="operation" value="exponent">
+    <label for="exponent">**</label></br>
+
+    <input type="button" onclick="chooseOp()" value="Choose Operation">
+</form>
+
+<p id="chooseOPResult"></p>
+
+<script>
 
 function tips (){
     console.log("Computing tips...");
@@ -53,7 +54,34 @@ function tips (){
 
     document.getElementById("result").innerHTML = "Tip amounts by increase of " + tip_increase + " are: " + result;   
 }
-    
+
+function chooseOp() {
+    console.log("Choosing operation...");
+
+    let times = document.getElementById("times").checked;
+    let divide = document.getElementById("divide").checked;
+    let exponent = document.getElementById("exponent").checked;
+
+    let check_amount = document.getElementById("check_amount").value;
+    let tip_increase = document.getElementById("tip_increase").value;
+
+    let result = "";
+
+    for (let i = 0; i < 10; i++) {
+        if (times == true){
+            result += (check_amount * (tip_increase * i) + check_amount * 0.10).toFixed(2) + " ";
+        }
+        else if (divide == true){
+            result += (check_amount / (tip_increase * i) + check_amount * 0.10).toFixed(2) + " ";
+        }
+        else if (exponent == true){
+            result += (check_amount ** (tip_increase * i) + check_amount * 0.10).toFixed(2) + " ";
+        }
+    }
+
+    document.getElementById("chooseOPResult").innerHTML = "The result is: " + result;
+}
+
 </script>
 
 </body>
