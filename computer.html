@@ -24,6 +24,17 @@
     <input type="button" value="Order a computer" onclick="orderComputer()">
 </form>
 
+<form>
+    <label for="property">Enter a property name</label>
+    <input type="text" id="property" name="property" value="engraved">
+    <br>
+
+    <label for="value">Enter a value</label>
+    <input type="text" id="value" name="value">
+
+    <input type="button" value="Update the computer" onclick="updateComputer()">
+</form>
+
 <p id="result"></p>
 
 <script> 
@@ -43,6 +54,14 @@ function orderComputer (){
     }
     document.getElementById("result").innerHTML = JSON.stringify(my_computer);
 }
+
+function updateComputer (){
+    let property = document.getElementById("property").value;
+    let value = document.getElementById("value").value;
+    my_computer[property] = value;
+    document.getElementById("result").innerHTML = JSON.stringify(my_computer);
+}
+
 </script>
 
 </body>
